@@ -1,0 +1,5 @@
+class Solution:
+    def mostFrequentEven(self, nums: List[int]) -> int:
+       ctr = Counter(nums)
+
+       return max([c for c in ctr if not c%2], key = lambda x:(ctr[x], -x), default = -1)
