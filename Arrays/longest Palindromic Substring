@@ -1,0 +1,29 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+        if n==1:
+            return s
+        ma=""
+        ans =""
+        for i in range(n-1):
+            # for odd indices
+            x=""
+            y=""
+            p1=i
+            p2=i
+            while p1>=0 and p2<n and s[p1]==s[p2]:
+                p1-=1
+                p2+=1
+            x=s[p1+1:p2]
+            # for even indices
+            p1=i
+            p2=i+1
+            while p1>=0 and p2<n and s[p1]==s[p2]:
+                p1-=1
+                p2+=1
+            y=s[p1+1:p2]
+            ans = x if len(x)>len(y) else y
+            if len(ans)>len(ma):
+                ma=ans
+        return ma
+            
